@@ -1,7 +1,7 @@
 import { Typography } from "@material-ui/core";
 import { List, ListItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { request, gql } from "graphql-request";
 
 import apiConfig from "../../configs/api";
