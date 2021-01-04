@@ -46,14 +46,12 @@ const useDocuments = id =>
 
 const TypePage = () => {
   const { id } = useParams();
-  const { data: dataType, isFetching: isFetchingType } = useDocumentType(id);
-  const { data: dataDocuments, isFetching: isFetchingDocuments } = useDocuments(
-    id
-  );
+  const { data: type, isFetching: isFetchingType } = useDocumentType(id);
+  const { data: documents, isFetching: isFetchingDocuments } = useDocuments(id);
 
   return (
     <div>
-      {!isFetchingType && <Typography variant="h5">{dataType.name}</Typography>}
+      {!isFetchingType && <Typography variant="h5">{type.name}</Typography>}
       {isFetchingDocuments && (
         <Typography variant="h6" className="loading-text">
           Загрузка...
@@ -61,7 +59,7 @@ const TypePage = () => {
       )}
       {!isFetchingDocuments && (
         <List>
-          {dataDocuments.map(item => (
+          {documents.map(item => (
             <ListItem>
               <Link to={`/documents/${item.id}`}>{item.name}</Link>
             </ListItem>

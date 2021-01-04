@@ -47,15 +47,15 @@ const useDocumentTypes = id =>
 const CategoryPage = () => {
   const { id } = useParams();
   const {
-    data: dataCategory,
+    data: category,
     isFetching: isFetchingCategory
   } = useDocumentCategory(id);
-  const { data: dataTypes, isFetching: isFetchingTypes } = useDocumentTypes(id);
+  const { data: types, isFetching: isFetchingTypes } = useDocumentTypes(id);
 
   return (
     <div>
       {!isFetchingCategory && (
-        <Typography variant="h5">{dataCategory.name}</Typography>
+        <Typography variant="h5">{category.name}</Typography>
       )}
       {isFetchingTypes && (
         <Typography variant="h6" className="loading-text">
@@ -64,7 +64,7 @@ const CategoryPage = () => {
       )}
       {!isFetchingTypes && (
         <List>
-          {dataTypes.map(item => (
+          {types.map(item => (
             <ListItem>
               <Link to={`/types/${item.id}`}>{item.name}</Link>
             </ListItem>

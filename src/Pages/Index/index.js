@@ -28,7 +28,7 @@ const useDocumentCategories = () =>
   });
 
 const IndexPage = () => {
-  const { status, data, error, isFetching } = useDocumentCategories();
+  const { data: categories, isFetching } = useDocumentCategories();
 
   return (
     <div>
@@ -40,7 +40,7 @@ const IndexPage = () => {
       )}
       {!isFetching && (
         <List>
-          {data.map(item => (
+          {categories.map(item => (
             <ListItem>
               <Link to={`/categories/${item.id}`}>{item.name}</Link>
             </ListItem>
