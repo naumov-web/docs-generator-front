@@ -60,7 +60,7 @@ const TypePage = () => {
       {!isFetchingDocuments && (
         <List>
           {documents.map(item => (
-            <ListItem>
+            <ListItem key={`document-${item.id}`}>
               <Link to={`/documents/${item.id}`}>{item.name}</Link>
             </ListItem>
           ))}

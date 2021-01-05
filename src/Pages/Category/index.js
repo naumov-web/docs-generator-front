@@ -65,7 +65,7 @@ const CategoryPage = () => {
       {!isFetchingTypes && (
         <List>
           {types.map(item => (
-            <ListItem>
+            <ListItem key={`type-${item.id}`}>
               <Link to={`/types/${item.id}`}>{item.name}</Link>
             </ListItem>
           ))}

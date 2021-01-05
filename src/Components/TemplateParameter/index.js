@@ -1,6 +1,7 @@
 import { FormControl, FormHelperText } from "@material-ui/core";
 import TemplateParameterString from "./TemplateParameterString";
 import TemplateParameterDateDDMMYYYY from "./TemplateParameterDateDDMMYYYY";
+import TemplateParameterSelectString from "./TemplateParameterSelectString";
 
 const TemplateParameter = ({ parameter, onChange }) => {
   return (
@@ -10,6 +11,9 @@ const TemplateParameter = ({ parameter, onChange }) => {
       )}
       {parameter.type_name === "date_dd_mm_yyyy" && (
         <TemplateParameterDateDDMMYYYY {...parameter} onChange={onChange} />
+      )}
+      {parameter.type_name === "select_string" && (
+        <TemplateParameterSelectString {...parameter} onChange={onChange} />
       )}
       {!parameter.is_manual && (
         <FormHelperText>Значение заполняется автоматически</FormHelperText>
