@@ -25,7 +25,9 @@ const TemplateParameterSelectString = ({
         defaultValue={defaultValue}
       >
         {values.map(value => (
-          <MenuItem value={value.name}>{value.name}</MenuItem>
+          <MenuItem key={`menu-item-${value.id}`} value={value.name}>
+            {value.name}
+          </MenuItem>
         ))}
       </Select>
     </>
