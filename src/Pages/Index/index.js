@@ -41,7 +41,7 @@ const IndexPage = () => {
       {!isFetching && (
         <List>
           {categories.map(item => (
-            <ListItem>
+            <ListItem key={`category-${item.id}`}>
               <Link to={`/categories/${item.id}`}>{item.name}</Link>
             </ListItem>
           ))}

@@ -16,7 +16,10 @@ const TemplateParameterDateDDMMYYYY = ({
       defaultValue={moment(default_value, "DD.MM.YYYY").format("YYYY-MM-DD")}
       required={true}
       onChange={event => {
-        onChange(id, event.target.value);
+        onChange(
+          id,
+          moment(event.target.value, "YYYY-MM-DD").format("DD.MM.YYYY")
+        );
       }}
     />
   );
