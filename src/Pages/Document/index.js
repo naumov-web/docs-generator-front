@@ -89,6 +89,7 @@ const buildDocumentQuery = async (document_id, parameters) => {
 const DocumentPage = () => {
   const [buildedUrl, setBuildedUrl] = useState(null);
   var parameterValues = [];
+  const twoButtonParametersLimit = 3;
   const { id } = useParams();
   const { data: document, isFetching: isFetchingDocument } = useDocument(id);
   const {
@@ -126,6 +127,28 @@ const DocumentPage = () => {
       )}
       {!isFetchingParameters && (
         <div className="form">
+          {templateParameters.length > twoButtonParametersLimit && (
+            <>
+              <div className="form-row">
+                <FormControl>
+                  <Button
+                    type="button"
+                    variant="contained"
+                    color="primary"
+                    onClick={useBuildDocument}
+                  >
+                    Сформировать документ
+                  </Button>
+                </FormControl>
+              </div>
+              {buildedUrl && (
+                <div className="builded-url-row">
+                  Документ успешно создан. Ссылка для скачивания{" "}
+                  <a href={buildedUrl}>{buildedUrl}</a>.
+                </div>
+              )}
+            </>
+          )}
           {templateParameters.map(parameter => (
             <div className="form-row" key={`parameter-${parameter.id}`}>
               <TemplateParameter
